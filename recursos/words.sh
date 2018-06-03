@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo `egrep -h "$1a" *.txt | wc -l`
+echo `egrep -h "$1b" *.txt | wc -l`
+echo `egrep -h "$1c" *.txt | wc -l`
+echo `egrep -h "$1d" *.txt | wc -l`
+echo `egrep -h "$1e" *.txt | wc -l`
+echo `egrep -h "$1f" *.txt | wc -l`
+echo `egrep -h "$1g" *.txt | wc -l`
+echo `egrep -h "$1h" *.txt | wc -l`
+echo `egrep -h "$1i" *.txt | wc -l`
+echo `egrep -h "$1j" *.txt | wc -l`
+echo `egrep -h "$1k" *.txt | wc -l`
+echo `egrep -h "$1l" *.txt | wc -l`
+echo `egrep -h "$1m" *.txt | wc -l`
+echo `egrep -h "$1n" *.txt | wc -l`
+echo `egrep -h "$1ñ" *.txt | wc -l`
+echo `egrep -h "$1o" *.txt | wc -l`
+echo `egrep -h "$1p" *.txt | wc -l`
+echo `egrep -h "$1q" *.txt | wc -l`
+echo `egrep -h "$1r" *.txt | wc -l`
+echo `egrep -h "$1s" *.txt | wc -l`
+echo `egrep -h "$1t" *.txt | wc -l`
+echo `egrep -h "$1u" *.txt | wc -l`
+echo `egrep -h "$1v" *.txt | wc -l`
+echo `egrep -h "$1w" *.txt | wc -l`
+echo `egrep -h "$1x" *.txt | wc -l`
+echo `egrep -h "$1y" *.txt | wc -l`
+echo `egrep -h "$1z" *.txt | wc -l`
