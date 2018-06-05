@@ -12,6 +12,6 @@ Una vez creado el fichero de texto, el programa deberá ser capaz de analizarlo,
 
 ## ¿Cómo lo hice?
 Las probabilidades usadas en la función que genera palabras están hechos a mano (con la ayuda del comando grep) analizando tanto una lista de palabras, como de verbos conjugados, nombres y apellidos que podés encontrar en [este repositorio](https://github.com/olea/lemarios).
-Los resultados de estas probabilidades están [en esta hoja de cálculo](). Además, el script que usé para recoger estos datos [también está aquí](), por si alguien decide hacer sus propias estadísticas.
+Los resultados de estas probabilidades están [en esta hoja de cálculo](https://github.com/lucia-blanco/transcomunicador-instrumental/blob/master/recursos/stat.ods). Además, el script que usé para recoger estos datos [también está aquí](https://github.com/lucia-blanco/transcomunicador-instrumental/blob/master/recursos/words.sh), por si alguien decide hacer sus propias estadísticas.
 
 También hay probabilidades de longitud de la palabra pero, a mayor longitud de la palabra, menor probabilidad de que la palabra sea correcta, así que decidí inventarme las probabilidades de longitud de la palabra, centrándome en las palabras de 4-5 letras.
