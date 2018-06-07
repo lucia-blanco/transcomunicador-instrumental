@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -152,132 +153,137 @@ export class AppComponent {
     2.5, 2.5, 2.5, 2.5, 2.5, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25];
 
   texto = '';
-  generateWord() {
-    const rl = Math.floor(Math.random() * 100);
-    const rs = Math.floor(Math.random() * 100);
-    let size = 0;
+  selected = 100;
+
+  generateText() {
     this.texto = '';
-    let letra = '';
-    let sizeSum = 0.0;
-    let sizeBool = false;
+    for (let m = 0; m < this.selected; m++) {
+      const rl = Math.floor(Math.random() * 100);
+      const rs = Math.floor(Math.random() * 100);
+      let size = 0;
+      let letra = '';
+      let sizeSum = 0.0;
+      let sizeBool = false;
 
-    for (let n = this.sizeArr.length - 1; n >= 0 && !sizeBool; n--) {
-      sizeSum += this.probSize[n];
-      if (sizeSum >= rs) {
-        size = this.sizeArr[n];
-        sizeBool = true;
-      }
-    }
-    // Pasa por las letras sumando la probabilidad hasta que sea mayor o igual que el número random
-    let sumP = 0.0;
-    let primLetra = false;
-    for (let i = this.letrasArr.length - 1; i >= 0 && !primLetra; i--) {
-      sumP += this.probPrim[i];
-      if (sumP >= rl) {
-        letra = this.letrasArr[i];
-        this.texto += letra;
-        primLetra = true;
-      }
-    }
-
-    if (size > 1) {
-      for (let j = size - 2; j >= 0; j--) {
-        let prob = [];
-        let impreso = false;
-        const r = Math.floor(Math.random() * 100);
-        let sumL = 0.0;
-        switch (letra) {
-          case 'a':
-            prob = this.probA;
-            break;
-          case 'b':
-            prob = this.probB;
-            break;
-          case 'c':
-            prob = this.probC;
-            break;
-          case 'd':
-            prob = this.probD;
-            break;
-          case 'e':
-            prob = this.probE;
-            break;
-          case 'f':
-            prob = this.probF;
-            break;
-          case 'g':
-            prob = this.probG;
-            break;
-          case 'h':
-            prob = this.probH;
-            break;
-          case 'i':
-            prob = this.probI;
-            break;
-          case 'j':
-            prob = this.probJ;
-            break;
-          case 'k':
-            prob = this.probK;
-            break;
-          case 'l':
-            prob = this.probL;
-            break;
-          case 'm':
-            prob = this.probM;
-            break;
-          case 'n':
-            prob = this.probN;
-            break;
-          case 'ñ':
-            prob = this.probÑ;
-            break;
-          case 'o':
-            prob = this.probO;
-            break;
-          case 'p':
-            prob = this.probP;
-            break;
-          case 'q':
-            prob = this.probQ;
-            break;
-          case 'r':
-            prob = this.probR;
-            break;
-          case 's':
-            prob = this.probS;
-            break;
-          case 't':
-            prob = this.probT;
-            break;
-          case 'u':
-            prob = this.probU;
-            break;
-          case 'v':
-            prob = this.probV;
-            break;
-          case 'w':
-            prob = this.probW;
-            break;
-          case 'x':
-            prob = this.probX;
-            break;
-          case 'y':
-            prob = this.probY;
-            break;
-          case 'z':
-            prob = this.probZ;
-            break;
+      for (let n = this.sizeArr.length - 1; n >= 0 && !sizeBool; n--) {
+        sizeSum += this.probSize[n];
+        if (sizeSum >= rs) {
+          size = this.sizeArr[n];
+          sizeBool = true;
         }
-        for (let k = this.letrasArr.length - 1; k >= 0 && !impreso; k--) {
-          sumL += prob[k];
-          if (sumL >= r) {
-            this.texto += (this.letrasArr[k]);
-            letra = this.letrasArr[k];
-            impreso = true;
+      }
+      // Pasa por las letras sumando la probabilidad hasta que sea mayor o igual que el número random
+      let sumP = 0.0;
+      let primLetra = false;
+      for (let i = this.letrasArr.length - 1; i >= 0 && !primLetra; i--) {
+        sumP += this.probPrim[i];
+        if (sumP >= rl) {
+          letra = this.letrasArr[i];
+          this.texto += letra;
+          primLetra = true;
+        }
+      }
+
+      if (size > 1) {
+        for (let j = size - 2; j >= 0; j--) {
+          let prob = [];
+          let impreso = false;
+          const r = Math.floor(Math.random() * 100);
+          let sumL = 0.0;
+          switch (letra) {
+            case 'a':
+              prob = this.probA;
+              break;
+            case 'b':
+              prob = this.probB;
+              break;
+            case 'c':
+              prob = this.probC;
+              break;
+            case 'd':
+              prob = this.probD;
+              break;
+            case 'e':
+              prob = this.probE;
+              break;
+            case 'f':
+              prob = this.probF;
+              break;
+            case 'g':
+              prob = this.probG;
+              break;
+            case 'h':
+              prob = this.probH;
+              break;
+            case 'i':
+              prob = this.probI;
+              break;
+            case 'j':
+              prob = this.probJ;
+              break;
+            case 'k':
+              prob = this.probK;
+              break;
+            case 'l':
+              prob = this.probL;
+              break;
+            case 'm':
+              prob = this.probM;
+              break;
+            case 'n':
+              prob = this.probN;
+              break;
+            case 'ñ':
+              prob = this.probÑ;
+              break;
+            case 'o':
+              prob = this.probO;
+              break;
+            case 'p':
+              prob = this.probP;
+              break;
+            case 'q':
+              prob = this.probQ;
+              break;
+            case 'r':
+              prob = this.probR;
+              break;
+            case 's':
+              prob = this.probS;
+              break;
+            case 't':
+              prob = this.probT;
+              break;
+            case 'u':
+              prob = this.probU;
+              break;
+            case 'v':
+              prob = this.probV;
+              break;
+            case 'w':
+              prob = this.probW;
+              break;
+            case 'x':
+              prob = this.probX;
+              break;
+            case 'y':
+              prob = this.probY;
+              break;
+            case 'z':
+              prob = this.probZ;
+              break;
+          }
+          for (let k = this.letrasArr.length - 1; k >= 0 && !impreso; k--) {
+            sumL += prob[k];
+            if (sumL >= r) {
+              this.texto += (this.letrasArr[k]);
+              letra = this.letrasArr[k];
+              impreso = true;
+            }
           }
         }
       }
+      this.texto += ' ';
     }
   }
 }

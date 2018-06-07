@@ -1,4 +1,14 @@
-<button (click)="generateWord()">Generar</button>
+<select [(ngModel)]="selected" [ngModelOptions]="{standalone: true}">
+  <option [value]="100">100</option>
+  <option [value]="200">200</option>
+  <option [value]="500">400</option>
+  <option [value]="700">650</option>
+  <option [value]="1000">1000</option>
+</select>
+
+<button (click)="generateText()">Generar</button>
+
+
 
 <div *ngIf="texto!=''">
   {{ texto }}
