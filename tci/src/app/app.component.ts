@@ -286,4 +286,7 @@ export class AppComponent {
       this.texto += ' ';
     }
   }
+
 }
+
+
