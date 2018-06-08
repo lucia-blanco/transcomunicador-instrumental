@@ -168,6 +168,7 @@ export class AppComponent {
   correctas = 0;
 
   generateText() {
+    this.correctas = 0;
     this.fin = false;
     this.texto = [];
     this.correct = [];

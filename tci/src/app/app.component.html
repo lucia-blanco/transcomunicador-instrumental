@@ -1,24 +1,32 @@
-<h1>Por favor, ten paciencia</h1>
+<h1 class="text-center mt-4 display-4">Transcomunicador Instrumental.</h1>
+<h4 class="text-center">Por favor, ten paciencia, la cobertura con el más allá no es muy buena.</h4>
 
-<select [(ngModel)]="selected" [ngModelOptions]="{standalone: true}">
-  <option [value]="30">30</option>
-  <option [value]="50">50</option>
-  <option [value]="70">70</option>
-  <option [value]="100">100</option>
-  <option [value]="150">150</option>
-</select>
+<div class="row m-4">
+  <div class="col-4 p-4">
+    <div class="dropdown"></div>
+    <select btn btn-secondary dropdown-toggle [(ngModel)]="selected" [ngModelOptions]="{standalone: true}">
+      <option class="dropdown-item" [value]="30">30</option>
+      <option class="dropdown-item" [value]="50">50</option>
+      <option class="dropdown-item" [value]="70">70</option>
+      <option class="dropdown-item" [value]="100">100</option>
+      <option class="dropdown-item" [value]="150">150</option>
+    </select>
 
-<button (click)="generateText()">Generar</button>
+    <button type="button" class="btn btn-success" (click)="generateText()">Generar</button>
+  </div>
 
-<div *ngIf="texto!=[] && fin">
-  <span *ngFor="let words of texto; let i = index">{{ texto[i] }}</span>
-</div>
+  <div class="col-lg-8 col-sm-12 p-4">
+    <div *ngIf="texto!=[] && fin">
+      <span *ngFor="let words of texto; let i = index">{{ texto[i] }}</span>
+    </div>
 
-<div style="color: red" *ngIf="correct!=[] && fin">
-  <p>Total de palabras encontradas: {{ correctas }}</p>
-  <p>{{ correct }}</p>
-</div>
+    <div *ngIf="correct!=[] && fin">
+      <p class="mt-3 font-weight-bold">Total de palabras encontradas: {{ correctas }}</p>
+      <p style="color: red">{{ correct }}</p>
+    </div>
 
-<div style="color: red" *ngIf="correct==[] && texto !=[] && fin">
-  <p>No se ha encontrado ninguna palabra :(</p>
+    <div style="color: red" *ngIf="correct==[] && texto !=[] && fin">
+      <p>No se ha encontrado ninguna palabra :(</p>
+    </div>
+  </div>
 </div>
