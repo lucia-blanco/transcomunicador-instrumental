@@ -165,6 +165,7 @@ export class AppComponent {
   loading_palabras = false;
   palabras: any[] = [];
   fin = false;
+  correctas = 0;
 
   generateText() {
     this.fin = false;
@@ -311,6 +312,7 @@ export class AppComponent {
           });
     if ((_.indexOf(this.palabras, palabra) >= 0)) {
       this.correct.push(' ' + this.palabra);
+      this.correctas++;
     }
   }
 }
