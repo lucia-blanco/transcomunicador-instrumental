@@ -1,6 +1,8 @@
 # Transcomunicador Instrumental
 Programa que permite realizar la TCI mediante la creación y el posterior análisis de ficheros de texto.
 
+[Live demo](https://rawgit.com/lucia-blanco/transcomunicador-instrumental/master/tci/dist/index.html). Por favor, sé paciente, todavía está en desarrollo.
+
 ## ¿En qué consiste?
 
 Se conoce la transcomunicación instrumental (TCI) como la técnica de comunicación que utiliza aparatos electrónicos para establecer comunicación con los espíritus.
