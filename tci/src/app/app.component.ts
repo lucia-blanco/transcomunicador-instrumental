@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Http } from '@angular/http';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(public http: Http) {
+    this.checkWord(this.palabra);
+  }
 
   letrasArr: Array<string> = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
   'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't',
@@ -153,10 +159,15 @@ export class AppComponent {
     2.5, 2.5, 2.5, 2.5, 2.5, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25];
 
   texto = '';
+  palabra = '';
   selected = 100;
+  correct = '';
+  loading_palabras = false;
+  palabras: any[] = [];
 
   generateText() {
     this.texto = '';
+    this.correct = '';
     for (let m = 0; m < this.selected; m++) {
       const rl = Math.floor(Math.random() * 100);
       const rs = Math.floor(Math.random() * 100);
@@ -173,13 +184,14 @@ export class AppComponent {
         }
       }
       // Pasa por las letras sumando la probabilidad hasta que sea mayor o igual que el número random
+      this.palabra = '';
       let sumP = 0.0;
       let primLetra = false;
       for (let i = this.letrasArr.length - 1; i >= 0 && !primLetra; i--) {
         sumP += this.probPrim[i];
         if (sumP >= rl) {
           letra = this.letrasArr[i];
-          this.texto += letra;
+          this.palabra += letra;
           primLetra = true;
         }
       }
@@ -276,17 +288,29 @@ export class AppComponent {
           for (let k = this.letrasArr.length - 1; k >= 0 && !impreso; k--) {
             sumL += prob[k];
             if (sumL >= r) {
-              this.texto += (this.letrasArr[k]);
+              this.palabra += (this.letrasArr[k]);
               letra = this.letrasArr[k];
               impreso = true;
             }
           }
         }
+        this.checkWord(this.palabra);
       }
-      this.texto += ' ';
+      this.texto += this.palabra + ' ';
     }
+
   }
 
+  checkWord(palabra) {
+    this.http.get('assets/palabras.json')
+            .subscribe( data => {
+            this.loading_palabras = true;
+            this.palabras = data.json();
+          });
+    if ((_.indexOf(this.palabras, palabra) >= 0)) {
+      this.correct += this.palabra + ' ';
+    }
+  }
 }
 
 
