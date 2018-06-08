@@ -155,19 +155,21 @@ export class AppComponent {
     0, 0, 0.003528893, 0.562858403, 1.877370975, 0, 10.53198059,
     0.121746802, 0.573445082, 0.005293339, 0.001764446, 0.012351125,
     4.423467137, 0, 0, 0, 0, 0.022937803];
-  probSize: Array<number> = [2.5, 2.5, 7.25, 20, 20, 12.5, 5, 2.5, 2.5, 2.5, 2.5,
-    2.5, 2.5, 2.5, 2.5, 2.5, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25];
+  probSize: Array<number> = [2.5, 2.5, 7.25, 20, 20, 12.5, 6.25, 5, 2.5, 2.5, 2.5,
+    2.5, 2.5, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25];
 
-  texto = '';
+  texto = [];
   palabra = '';
-  selected = 100;
-  correct = '';
+  selected = 30;
+  correct = [];
   loading_palabras = false;
   palabras: any[] = [];
+  fin = false;
 
   generateText() {
-    this.texto = '';
-    this.correct = '';
+    this.fin = false;
+    this.texto = [];
+    this.correct = [];
     for (let m = 0; m < this.selected; m++) {
       const rl = Math.floor(Math.random() * 100);
       const rs = Math.floor(Math.random() * 100);
@@ -296,9 +298,9 @@ export class AppComponent {
         }
         this.checkWord(this.palabra);
       }
-      this.texto += this.palabra + ' ';
+      this.texto.push(' ' + this.palabra);
     }
-
+    this.fin = true;
   }
 
   checkWord(palabra) {
@@ -308,7 +310,7 @@ export class AppComponent {
             this.palabras = data.json();
           });
     if ((_.indexOf(this.palabras, palabra) >= 0)) {
-      this.correct += this.palabra + ' ';
+      this.correct.push(' ' + this.palabra);
     }
   }
 }

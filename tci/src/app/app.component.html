@@ -1,19 +1,23 @@
+<h1>Por favor, ten paciencia</h1>
+
 <select [(ngModel)]="selected" [ngModelOptions]="{standalone: true}">
+  <option [value]="30">30</option>
+  <option [value]="50">50</option>
+  <option [value]="70">70</option>
   <option [value]="100">100</option>
-  <option [value]="200">200</option>
-  <option [value]="500">400</option>
-  <option [value]="700">650</option>
-  <option [value]="1000">1000</option>
+  <option [value]="150">150</option>
 </select>
 
 <button (click)="generateText()">Generar</button>
 
-
-
-<div *ngIf="texto!=''">
-  {{ texto }}
+<div *ngIf="texto!=[] && fin">
+  <span *ngFor="let words of texto; let i = index">{{ texto[i] }}</span>
 </div>
 
-<div style="color: red" *ngIf="correct!=''">
-  {{ correct }}
+<div style="color: red" *ngIf="correct!=[] && fin">
+  <p>{{ correct }}</p>
+</div>
+
+<div style="color: red" *ngIf="correct==[] && texto !=[] && fin">
+  <p>No se ha encontrado ninguna palabra :(</p>
 </div>
